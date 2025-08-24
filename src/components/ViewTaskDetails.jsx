@@ -154,7 +154,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
               className='bg-[#28A745] button text-[#000000]'
               onClick={handleEdit}>
               Edit
-              <img src="/edit.png" alt="edit" className='w-5 h-5' />
+              <img src="/edit.png" alt="edit" className='w-4 h-4' />
             </button>
           </div>
         }

@@ -68,7 +68,7 @@ h1{
   }
 
   .checkbox {
-    @apply flex justify-center items-center gap-1 accent-white outline-none
+    @apply flex justify-center items-center gap-1  outline-none cursor-pointer accent-emerald-600 w-4 h-4
   }
 
   .button {

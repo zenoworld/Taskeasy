@@ -71,18 +71,37 @@ const AuthReducer = (state, action) => {
         )),
         editDetailCard: null
       }
+    case 'TOGGLE_COMPLETE':
+      return {
+        ...state,
+        details: state.details.map((detail) => (
+          detail.id === action.payload ?
+            detail.complete === false ? {
+              ...detail,
+              failed: false,
+              pending: false,
+              complete: true
+            } : {
+              ...detail,
+              failed: false,
+              pending: true,
+              complete: false
+            }
+            : detail
+        ))
+      }
     case 'MARK_FAILED':
       return {
         ...state,
         details: state.details.map((detail) => (
           detail.id === action.payload ?
-          {
-            ...detail,
-            failed:true,
-            pending:false,
-            complete:false
-          }:
-          detail
+            {
+              ...detail,
+              failed: true,
+              pending: false,
+              complete: false
+            }
+            : detail
         ))
       }
     case 'CLEAR_ALL':
