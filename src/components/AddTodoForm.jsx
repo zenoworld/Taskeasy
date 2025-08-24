@@ -33,15 +33,13 @@ const AddTodoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const deadline = new Date(newDetails.deadlineDate);
-        const diffDays = Math.ceil((deadline - new Date()) / (24 * 60 * 60 * 1000));
         if (editDetailCard) {
             dispatch(
                 {
                     type: 'UPDATE_DETAIL',
                     payload: {
                         id: editDetailCard.id,
-                        title: editDetailCard.title,
+                        title: newDetails.title,
                         todo: newDetails.todo,
                         deadlineDate: newDetails.deadlineDate,
                         deadlineTime: newDetails.deadlineTime,
@@ -58,7 +56,10 @@ const AddTodoForm = () => {
                     payload: null
                 }
             )
-        } else {
+        }
+        else {
+            const deadline = new Date(newDetails.deadlineDate);
+            const diffDays = Math.ceil((deadline - new Date()) / (24 * 60 * 60 * 1000));
             dispatch(
                 {
                     type: 'ADD_DATA',
@@ -144,7 +145,7 @@ const AddTodoForm = () => {
                         type='submit'
                         className='bg-yellow-400 text-[#000000] font-medium w-full h-full py-1 rounded-md cursor-pointer flex justify-center items-center gap-4'>
                         Update Task
-                        <img src="/save.png" alt="file" className='w-6 h-6' />
+                        <img src="/save.png" alt="file" className='w-5 h-5' />
                     </button>
                     :
                     <button
