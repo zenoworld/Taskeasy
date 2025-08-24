@@ -1,0 +1,112 @@
+import { createContext, useReducer, useEffect } from "react";
+
+const parsing = (value) => {
+  try {
+    return JSON.parse(value);
+  } catch (error) {
+    return null;
+  }
+};
+
+const initialState = {
+  details: parsing(localStorage.getItem('detailsData')) || [],
+  editDetailCard: null
+};
+
+export const AuthContext = createContext();
+
+const AuthReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_DATA':
+      return {
+        ...state,
+        details: [...state.details, action.payload]
+      };
+
+    case 'DELETE_DATA':
+      return {
+        ...state,
+        details: state.details.filter((detail) => detail.id !== action.payload)
+      };
+
+    // case 'EDIT':
+    //   return {
+    //     ...state,
+    //     details: state.details.map((detail) => (
+    //       detail.id === action.payload ?
+    //         {
+    //           ...detail,
+    //           edit: !detail.edit
+    //         }
+    //         :
+    //         {
+    //           ...detail,
+    //           edit: false
+    //         }
+    //     ))
+    //   };
+    case 'SET_EDIT_ITEM':
+      return {
+        ...state,
+        editDetailCard: action.payload
+      }
+    case 'UPDATE_IMPORTANCE':
+      return {
+        ...state,
+        details: state.details.map((detail) => (
+          detail.id === action.payload.id ?
+            {
+              ...detail,
+              importance: action.payload.importance
+            }
+            : detail
+        ))
+      }
+    case 'UPDATE_DETAIL':
+      return {
+        ...state,
+        details: state.details.map((detail) => (
+          detail.id === action.payload.id
+            ? action.payload : detail
+        )),
+        editDetailCard: null
+      }
+    case 'MARK_FAILED':
+      return {
+        ...state,
+        details: state.details.map((detail) => (
+          detail.id === action.payload ?
+          {
+            ...detail,
+            failed:true,
+            pending:false,
+            complete:false
+          }:
+          detail
+        ))
+      }
+    case 'CLEAR_ALL':
+      return {
+        ...state,
+        details: []
+      }
+    default:
+      return state;
+  }
+};
+
+export const AuthContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(AuthReducer, initialState);
+
+  useEffect(() => {
+    localStorage.setItem('detailsData', JSON.stringify(state.details));
+  }, [state.details]);
+
+  return (
+    <AuthContext.Provider
+      value={[state.details, dispatch, state.editDetailCard]}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
