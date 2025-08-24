@@ -15,14 +15,14 @@ const Completed = () => {
   }, [details])
 
   const sortByLatest = () => {
-    setFetchedDetails(
+    setCompleteTasks(
       [...details].sort((a, b) =>
         new Date(b.deadlineDate) - new Date(a.deadlineDate)
       ));
 
   }
   const sortByOldest = () => {
-    setFetchedDetails(
+    setCompleteTasks(
       [...details].sort((a, b) =>
         new Date(a.deadlineDate) - new Date(b.deadlineDate)
       ));

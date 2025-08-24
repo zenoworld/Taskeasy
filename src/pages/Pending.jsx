@@ -14,13 +14,13 @@ const Pending = () => {
 
 
   const sortByLatest = () => {
-    setFetchedDetails(
+    setPendingTasks(
       [...details].sort((a, b) =>
         new Date(b.deadlineDate) - new Date(a.deadlineDate)
       ));
   }
   const sortByOldest = () => {
-    setFetchedDetails(
+    setPendingTasks(
       [...details].sort((a, b) =>
         new Date(a.deadlineDate) - new Date(b.deadlineDate)
       ));
