@@ -1,10 +1,10 @@
-import React, { useContext} from 'react'
+import React, { useContext } from 'react'
 import { AuthContext } from '../context/Context'
 
-const DataCard = ({ data,setOpenDetailCard }) => {
+const DataCard = ({ data, setOpenDetailCard }) => {
     const [details, dispatch, editDetailCard] = useContext(AuthContext);
 
-    
+
     const handleDelete = () => {
         dispatch({ type: 'DELETE_DATA', payload: data.id });
     }
@@ -14,12 +14,23 @@ const DataCard = ({ data,setOpenDetailCard }) => {
         <div className="card">
             <div
                 className='w-full flex justify-between items-start'>
-                <div
-                    className={`card_label
+                {
+                    data.failed === true
+                        ?
+                        <span className='bg-red-600 text-white px-2 py-1 rounded font-medium text-sm'>Failed</span>
+                        :
+                        data.complete === true
+                            ?
+                            <span className='bg-green-600 text-white px-2 py-1 rounded font-medium text-sm'>Completed</span>
+                            :
+                            <div
+                                className={`card_label
                  ${data.importance === 'high' ? 'bg-[#E63946]'
-                            : data.importance === 'medium' ? 'bg-[#f59e0b]'
-                                : 'bg-[#24a019]'}
-                `}></div>
+                                        : data.importance === 'medium' ? 'bg-[#f59e0b]'
+                                            : 'bg-[#24a019]'}
+                `} />
+                }
+
 
                 <div className='flex flex-col text-sm text-white'>
                     <span>{data.deadlineDate}</span>
@@ -39,7 +50,7 @@ const DataCard = ({ data,setOpenDetailCard }) => {
                 <button
                     className={`
                     bg-[#17A2B8] text-[#000000] button
-                    `} 
+                    `}
                     onClick={() => setOpenDetailCard(data)}>
                     View
                     <img src="/research.png" alt="edit" className='w-5 h-5' />
