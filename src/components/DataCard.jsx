@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context/Context'
+import { NavLink } from 'react-router-dom';
 
 const DataCard = ({ data, setOpenDetailCard }) => {
     const [details, dispatch, editDetailCard] = useContext(AuthContext);
@@ -73,6 +74,7 @@ const DataCard = ({ data, setOpenDetailCard }) => {
                     View
                     <img src="/research.png" alt="edit" className='w-5 h-5' />
                 </button>
+
 
                 <button className='bg-[#DC3545] text-[#FFFFFF]  button' onClick={handleDelete}>
                     Remove

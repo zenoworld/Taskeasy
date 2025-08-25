@@ -22,15 +22,15 @@ const Sidebar = () => {
                         dropdown &&
                         <div className='dropdown_menu'>
 
-                            <NavLink to="/pending" className="dropdown_item">
+                            <NavLink to="/pendingTasks" className="dropdown_item">
                                 Pending <img src='/load.png' className='h-5 w-5' />
                             </NavLink>
 
-                            <NavLink to="/complete" className="dropdown_item">
+                            <NavLink to="/completeTasks" className="dropdown_item">
                                 Completed <img src='/checked.png' className='h-5 w-5' />
                             </NavLink>
 
-                            <NavLink to="/failed" className="dropdown_item">
+                            <NavLink to="/failedTasks" className="dropdown_item">
                                 Failed <img src='/cancel.png' className='h-5 w-5' />
                             </NavLink>
                             

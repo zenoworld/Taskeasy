@@ -15,7 +15,7 @@ const Close = ({ setOpenDetailCard, clearEditItemData }) => {
                 <img
                     src="/close.png"
                     alt="close"
-                    className='w-8 h-8 bg-gray-200 rounded-full cursor-pointer hover:bg-gray-400'
+                    className='w-8 h-8 bg-gray-400 rounded-full cursor-pointer hover:bg-gray-500'
                 />
             </button>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { AuthContext } from '../context/Context'
+import { AuthContext } from '../../context/Context'
 
 const AddTodoForm = () => {
 
@@ -46,7 +46,9 @@ const AddTodoForm = () => {
                         importance: newDetails.importance,
                         complete: false,
                         failed: false,
-                        pending: true
+                        pending: true,
+                        links:newDetails.links,
+                        documents :newDetails.documents
                     }
                 }
             )
@@ -74,7 +76,9 @@ const AddTodoForm = () => {
                                 : 'low',
                         complete: false,
                         failed: false,
-                        pending: true
+                        pending: true,
+                        links:[],
+                        documents :[]
                     }
                 }
             );
@@ -92,7 +96,7 @@ const AddTodoForm = () => {
 
         <form
             onSubmit={handleSubmit}
-            className='addTodo'>
+            className='todoForm'>
             <label className='label'>
                 Title
                 <input

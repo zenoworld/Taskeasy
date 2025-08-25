@@ -12,9 +12,11 @@ const Router = () => {
             <Route path="/" element={<Home />} />
             <Route path="/addTodo" element={<AddTodo />} />
             <Route path="/allTasks" element={<AllTasks />} />
-            <Route path="/pending" element={<Pending />} />
-            <Route path="/complete" element={<Completed />} />
-            <Route path="/failed" element={<Failed />} />
+            <Route path="/pendingTasks" element={<Pending />} />
+            <Route path="/completeTasks" element={<Completed />} />
+            <Route path="/failedTasks" element={<Failed />} />
+
+            <Route path="/:id" element={<></>}/>
         </Routes>
     </>
 }

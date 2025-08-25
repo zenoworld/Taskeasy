@@ -1,8 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { AuthContext } from '../context/Context';
-import AddTodoForm from './AddTodoForm';
+import AddTodoForm from './formSections/AddTodoForm';
 import Close from './Close';
-
+import { cardDataAssignOptions } from "../data/index"
+import AddLinks from './formSections/AddLinks';
+import AddDocuments from './formSections/AddDocuments';
 
 const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
   const [details, dispatch, editDetailCard] = useContext(AuthContext);
@@ -18,6 +20,8 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
     }
   )
   const [threeDotsOpen, setThreeDotsOpen] = useState(false);
+  const [openViewLinksSection, setOpenViewLinksSection] = useState(false);
+  const [openDocumentSection, setOpenDocumentSection] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -82,6 +86,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
   }, [viewTaskData.deadlineDate, viewTaskData.deadlineTime, viewTaskData.id, dispatch])
 
   const handleEdit = () => {
+    setThreeDotsOpen(false);
     if (editDetailCard) {
       dispatch({
         type: 'SET_EDIT_ITEM',
@@ -95,7 +100,6 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
         }
       )
     }
-
   }
 
   const clearEditItemData = () => {
@@ -107,11 +111,25 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
     )
   }
 
+  const handleAdditionalDataClick = (name) => {
+    if (name === "Add Links") setOpenViewLinksSection(true);
+    else setOpenDocumentSection(true);
+  }
+
+  const closeAll = () => {
+    setThreeDotsOpen(false);
+    setOpenViewLinksSection(false);
+    setOpenDocumentSection(false);
+  }
+
+
   return (
     <div className='fixed top-0 left-0 w-full h-screen bg-black/50 text-gray-200 flex items-center justify-center z-50'>
       <div className='bg-gray-800 p-6 rounded-lg shadow-lg w-11/12 max-w-2xl h-11/12 overflow-y-auto relative '>
 
         <Close setOpenDetailCard={setOpenDetailCard} clearEditItemData={clearEditItemData} />
+
+
         {
           editDetailCard != null ?
             (
@@ -119,62 +137,134 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
                 <AddTodoForm />
               </div>
             ) :
-            (
-              <div className='w-full h-5/6 flex flex-col justify-between relative gap-1'>
-
-
-                <div className='h-3/5 py-2 w-full  bg-gray-700/60 rounded-lg  text-gray-300 shadow-md shadow-gray-950 relative'>
-
-                  <div className=' flex justify-end items-center px-2'>
-                    <button className='cursor-pointer rounded-full' onClick={() => setThreeDotsOpen(!threeDotsOpen)}>
-                      <img src='/dots.png' alt='dots' className='w-6 h-6 ' />
-                    </button>
-                  </div>
-
-                  <div className={`absolute right-5 top-10 w-30 h-40 rounded-md bg-black/30 ${threeDotsOpen ? 'block' : 'hidden'}`}>
-
-                  </div>
-
-                  <div className='px-4 h-[90%] overflow-y-auto scrollbar'>
+            editDetailCard == null && openViewLinksSection && !openDocumentSection ?
+              (
+                <div className='w-full h-[80%] flex flex-col items-center justify-between relative'>
+                  <AddLinks />
+                  <div className='linkContainer'>
                     {
-                      viewTaskData.todo ?
-                        viewTaskData.todo
-                        : <p className='text-gray-400 italic'>No details provided.</p>
+                      data.links == 0 ?
+                        <h2 className='text-gray-400 italic font-medium text-lg text-center'>links not available</h2>
+                        : <div>
+                          
+                        </div>
                     }
                   </div>
-
                 </div>
+              )
+              :
+              editDetailCard == null && !openViewLinksSection && openDocumentSection ?
+                (
+                  <div className='w-full flex items-center justify-center relative py-4 px-4'>
+                    <AddDocuments />
+                  </div>
+                )
+                :
+                (
+                  <div className='w-full h-5/6 flex flex-col justify-between relative gap-1'>
 
-                <div className='flex justify-between items-center w-full'>
-                  <div className='bg-[url("/calendar.png")] bg-no-repeat w-full h-50 bg-center bg-contain flex justify-center items-end text-black'>
-                    <div className='flex flex-col justify-center items-center  py-4 font-bold gap-2'>
-                      <div>
-                        <h1>Deadline</h1>
-                        <h1>{viewTaskData.deadlineDate + "  " + viewTaskData.deadlineTime}</h1>
+                    <div
+                      className='h-3/5 py-2 w-full bg-gray-700/60 rounded-lg text-gray-300 shadow-md shadow-gray-950 relative transition-all duration-500 ease-in-out'
+                    >
+
+                      <div
+                        className=' flex justify-end items-center px-2'
+                      >
+                        <button
+                          className='cursor-pointer rounded-full' onClick={() => setThreeDotsOpen(!threeDotsOpen)}
+                        >
+                          <img
+                            src='/dots.png'
+                            alt='dots'
+                            className='w-6 h-6'
+                          />
+                        </button>
                       </div>
 
-                      <div>
-                        <h1>Time Left</h1>
-                        <h1>{remainingTime}</h1>
+                      <div
+                        className={`absolute right-5 top-10 w-40 h-auto rounded-md bg-gray-900/90 text-[#ffffff] flex flex-col ${threeDotsOpen ? 'block' : 'hidden'} py-2`}
+                      >
+                        {
+                          cardDataAssignOptions.map((option, index) => (
+                            <div
+                              key={index}
+                              className='p-4 hover:bg-gray-600 transition-all duration-200 ease-in-out cursor-pointer'
+                              onClick={() => handleAdditionalDataClick(option.name)}
+                            >
+                              {option.name}
+                            </div>
+                          ))
+                        }
+                      </div>
+
+                      <div
+                        className='px-4 h-[90%] overflow-y-auto scrollbar'
+                        onClick={() => setThreeDotsOpen(false)}
+                      >
+                        {
+                          viewTaskData.todo ?
+                            viewTaskData.todo
+                            :
+                            <p
+                              className='text-gray-400 italic'
+                            >
+                              No details provided.
+                            </p>
+                        }
+                      </div>
+
+                    </div>
+
+                    <div
+                      className='flex justify-between items-center w-full'
+                      onClick={() => setThreeDotsOpen(false)}
+                    >
+                      <div
+                        className='bg-[url("/calendar.png")] bg-no-repeat w-full h-50 bg-center bg-contain flex justify-center items-end text-black'
+                      >
+                        <div
+                          className='flex flex-col justify-center items-center  py-4 font-bold gap-2'
+                        >
+                          <div>
+                            <h1>Deadline</h1>
+                            <h1>{viewTaskData.deadlineDate + "  " + viewTaskData.deadlineTime}</h1>
+                          </div>
+
+                          <div>
+                            <h1>Time Left</h1>
+                            <h1>{remainingTime}</h1>
+                          </div>
+                        </div>
                       </div>
                     </div>
+
+
                   </div>
-                </div>
-
-
-              </div>
-            )
+                )
         }
 
         {
           !data.failed && !data.complete &&
           <div className='flex justify-between items-center absolute bottom-0 right-0 p-4 gap-2 w-full'>
-            <button
-              className='bg-[#28A745] button text-[#000000]'
-              onClick={handleEdit}>
-              Edit
-              <img src="/edit.png" alt="edit" className='w-4 h-4' />
-            </button>
+            {
+              !openViewLinksSection && !openDocumentSection &&
+              <button
+                className='bg-[#28A745] button text-[#000000]'
+                onClick={handleEdit}>
+                Edit
+                <img src="/edit.png" alt="edit" className='w-4 h-4' />
+              </button>
+            }
+            {
+              (openViewLinksSection || openDocumentSection) &&
+              <button
+                className='button text-[#ffffff] bg-red-600'
+                onClick={closeAll}
+              >
+                Close
+              </button>
+            }
+
           </div>
         }
 
