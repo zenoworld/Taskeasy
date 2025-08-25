@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Close = ({ setOpenDetailCard , clearEditItemData}) => {
+const Close = ({ setOpenDetailCard, clearEditItemData }) => {
 
-    const handleClick = () =>{
+    const handleClick = () => {
         setOpenDetailCard([]);
         if (clearEditItemData) {
             clearEditItemData();
@@ -10,7 +10,7 @@ const Close = ({ setOpenDetailCard , clearEditItemData}) => {
     }
 
     return (
-        <div className='w-full flex justify-end '>
+        <div className='w-full flex justify-end mb-2'>
             <button onClick={handleClick}>
                 <img
                     src="/close.png"

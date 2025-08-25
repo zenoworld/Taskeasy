@@ -17,6 +17,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
       importance: data.importance
     }
   )
+  const [threeDotsOpen, setThreeDotsOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -106,7 +107,6 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
     )
   }
 
-
   return (
     <div className='fixed top-0 left-0 w-full h-screen bg-black/50 text-gray-200 flex items-center justify-center z-50'>
       <div className='bg-gray-800 p-6 rounded-lg shadow-lg w-11/12 max-w-2xl h-11/12 overflow-y-auto relative '>
@@ -120,14 +120,33 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
               </div>
             ) :
             (
-              <div className='w-full h-3/4 flex flex-col justify-between '>
-                <div className='h-2/3 overflow-y-auto bg-gray-700/60 p-4 rounded-lg scrollbar my-2 text-gray-300 shadow-md shadow-gray-950'>
-                  {viewTaskData.todo ? viewTaskData.todo : <p className='text-gray-400 italic'>No details provided.</p>}
+              <div className='w-full h-5/6 flex flex-col justify-between relative gap-1'>
+
+
+                <div className='h-3/5 py-2 w-full  bg-gray-700/60 rounded-lg  text-gray-300 shadow-md shadow-gray-950 relative'>
+
+                  <div className=' flex justify-end items-center px-2'>
+                    <button className='cursor-pointer rounded-full' onClick={() => setThreeDotsOpen(!threeDotsOpen)}>
+                      <img src='/dots.png' alt='dots' className='w-6 h-6 ' />
+                    </button>
+                  </div>
+
+                  <div className={`absolute right-5 top-10 w-30 h-40 rounded-md bg-black/30 ${threeDotsOpen ? 'block' : 'hidden'}`}>
+
+                  </div>
+
+                  <div className='px-4 h-[90%] overflow-y-auto scrollbar'>
+                    {
+                      viewTaskData.todo ?
+                        viewTaskData.todo
+                        : <p className='text-gray-400 italic'>No details provided.</p>
+                    }
+                  </div>
+
                 </div>
 
-                <div className='flex justify-between items-center mb-4 w-full'>
-
-                  <div className='bg-[url("/calendar.png")] bg-no-repeat w-full h-50 bg-center bg-contain flex justify-center items-end text-black '>
+                <div className='flex justify-between items-center w-full'>
+                  <div className='bg-[url("/calendar.png")] bg-no-repeat w-full h-50 bg-center bg-contain flex justify-center items-end text-black'>
                     <div className='flex flex-col justify-center items-center  py-4 font-bold gap-2'>
                       <div>
                         <h1>Deadline</h1>
@@ -139,10 +158,10 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
                         <h1>{remainingTime}</h1>
                       </div>
                     </div>
-
-
                   </div>
                 </div>
+
+
               </div>
             )
         }
