@@ -13,10 +13,10 @@ const LinksContainer = ({ id }) => {
 
 
     return <>
-        <div className='linkContainer gap-2'>
+        <div className='linkContainer'>
             {
                 linksData.length == 0 ?
-                    <h2 className='text-gray-400 italic font-medium text-md text-center'>links not available</h2>
+                    <h2 className='text-gray-600 italic font-medium text-md text-center'>links not added</h2>
                     :
                     linksData.map((link, index) => (
                         <Links key={index} linkData={link} />

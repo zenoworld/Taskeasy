@@ -175,7 +175,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
                       </div>
 
                       <div
-                        className={`absolute right-5 top-10 w-30 h-auto rounded-md bg-gray-900/90 text-[#ffffff] flex flex-col ${threeDotsOpen ? 'block' : 'hidden'} py-2`}
+                        className={`absolute right-5 top-10 w-40 h-auto rounded-md bg-gray-900/90 text-[#ffffff] flex flex-col ${threeDotsOpen ? 'block' : 'hidden'} py-2`}
                       >
                         {
                           cardDataAssignOptions.map((option, index) => (
