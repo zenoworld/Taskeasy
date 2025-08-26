@@ -1,17 +1,35 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../context/Context'
 
-const AddLinks = () => {
+const AddLinks = ({ id }) => {
+    const [details, dispatch, editDetailCard] = useContext(AuthContext);
     const [link, setLink] = useState({
         linkTitle: "",
         hyperlink: ""
     })
 
     const handleChange = (e) => {
-        setLink((prev) => ({ ...prev, [e.target.id]: [e.target.value] }))
+        setLink((prev) => ({ ...prev, [e.target.id]: e.target.value }))
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch({
+            type: 'ADD_LINK',
+            payload: {
+                todoId: id,
+                id: Date.now(),
+                title: link.linkTitle,
+                hyperlink: link.hyperlink
+            }
+        })
+
+        setLink(
+            {
+                linkTitle : "",
+                hyperlink :""
+            }
+        )
     }
 
     return (

@@ -1,8 +1,8 @@
 export const cardDataAssignOptions = [
     {
-        name : "Add Links",
+        name : "Links",
     },
     {
-        name : "Add Documents",
+        name : "Documents",
     },
 ]

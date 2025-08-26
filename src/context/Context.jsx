@@ -22,6 +22,17 @@ const AuthReducer = (state, action) => {
         ...state,
         details: [...state.details, action.payload]
       };
+    case 'ADD_LINK':
+      return {
+        ...state,
+        details: state.details.map((detail) => (
+          detail.id === action.payload.todoId ?
+            {
+              ...detail,
+              links: [...detail.links, action.payload]
+            } : detail
+        ))
+      }
 
     case 'DELETE_DATA':
       return {
@@ -29,22 +40,17 @@ const AuthReducer = (state, action) => {
         details: state.details.filter((detail) => detail.id !== action.payload)
       };
 
-    // case 'EDIT':
-    //   return {
-    //     ...state,
-    //     details: state.details.map((detail) => (
-    //       detail.id === action.payload ?
-    //         {
-    //           ...detail,
-    //           edit: !detail.edit
-    //         }
-    //         :
-    //         {
-    //           ...detail,
-    //           edit: false
-    //         }
-    //     ))
-    //   };
+    case 'DELETE_LINK':
+      return {
+        ...state,
+        details : state.details.map((detail) => (
+          detail.id === action.payload.todoId ?
+          {
+            ...detail,
+            links : detail.links.filter((link) => link.id != action.payload.id)
+          }: detail
+        ))
+      }
     case 'SET_EDIT_ITEM':
       return {
         ...state,

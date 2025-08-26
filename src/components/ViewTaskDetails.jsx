@@ -5,6 +5,7 @@ import Close from './Close';
 import { cardDataAssignOptions } from "../data/index"
 import AddLinks from './formSections/AddLinks';
 import AddDocuments from './formSections/AddDocuments';
+import LinksContainer from './LinksContainer';
 
 const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
   const [details, dispatch, editDetailCard] = useContext(AuthContext);
@@ -112,7 +113,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
   }
 
   const handleAdditionalDataClick = (name) => {
-    if (name === "Add Links") setOpenViewLinksSection(true);
+    if (name === "Links") setOpenViewLinksSection(true);
     else setOpenDocumentSection(true);
   }
 
@@ -140,16 +141,8 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
             editDetailCard == null && openViewLinksSection && !openDocumentSection ?
               (
                 <div className='w-full h-[80%] flex flex-col items-center justify-between relative'>
-                  <AddLinks />
-                  <div className='linkContainer'>
-                    {
-                      data.links == 0 ?
-                        <h2 className='text-gray-400 italic font-medium text-lg text-center'>links not available</h2>
-                        : <div>
-                          
-                        </div>
-                    }
-                  </div>
+                  <AddLinks id={data.id}/>
+                  <LinksContainer id={data.id} />
                 </div>
               )
               :
@@ -182,7 +175,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
                       </div>
 
                       <div
-                        className={`absolute right-5 top-10 w-40 h-auto rounded-md bg-gray-900/90 text-[#ffffff] flex flex-col ${threeDotsOpen ? 'block' : 'hidden'} py-2`}
+                        className={`absolute right-5 top-10 w-30 h-auto rounded-md bg-gray-900/90 text-[#ffffff] flex flex-col ${threeDotsOpen ? 'block' : 'hidden'} py-2`}
                       >
                         {
                           cardDataAssignOptions.map((option, index) => (
