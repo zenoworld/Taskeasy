@@ -6,6 +6,7 @@ import { cardDataAssignOptions } from "../data/index"
 import AddLinks from './formSections/AddLinks';
 import AddDocuments from './formSections/AddDocuments';
 import LinksContainer from './LinksContainer';
+import DocumentContainer from './documentSection/DocumentContainer';
 
 const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
   const [details, dispatch, editDetailCard] = useContext(AuthContext);
@@ -141,15 +142,16 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
             editDetailCard == null && openViewLinksSection && !openDocumentSection ?
               (
                 <div className='w-full h-[80%] flex flex-col items-center justify-between relative'>
-                  <AddLinks id={data.id}/>
+                  <AddLinks id={data.id} />
                   <LinksContainer id={data.id} />
                 </div>
               )
               :
               editDetailCard == null && !openViewLinksSection && openDocumentSection ?
                 (
-                  <div className='w-full flex items-center justify-center relative py-4 px-4'>
-                    <AddDocuments />
+                  <div className='w-full h-[80%] flex flex-col items-center justify-between relative'>
+                    <AddDocuments id={data.id} />
+                    <DocumentContainer id={data.id} />
                   </div>
                 )
                 :

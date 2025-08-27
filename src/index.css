@@ -13,7 +13,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
 }
 
 h1 {
@@ -88,6 +87,10 @@ h1 {
 
   .linkContainer{
     @apply w-full h-4/5 overflow-y-auto gap-4 rounded-md p-4 bg-gray-900 shadow-lg shadow-black/60 relative flex flex-col 
+  }
+
+  .documentContainer {
+    @apply w-full h-3/5 overflow-y-auto gap-4 rounded-md p-4 bg-gray-900 shadow-lg shadow-black/60 relative flex flex-col 
   }
 
   .data_container {
