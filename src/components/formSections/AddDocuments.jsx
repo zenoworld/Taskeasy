@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import {AuthContext} from "../../context/Context"
+import { AuthContext } from "../../context/Context"
 import axios from 'axios'
 
 const AddDocuments = ({ id }) => {
@@ -76,7 +76,14 @@ const AddDocuments = ({ id }) => {
     if (docsData) {
       dispatch({
         type: 'ADD_DOCUMENT',
-        payload: docsData
+        payload: {
+          todoId:docsData.todoId,
+          id: Date.now(),
+          title: docsData.title,
+          url: docsData.url,
+          public_id: docsData.public_id,
+          name: docsData.name
+        }
       })
     } else {
       alert('Failed to add the Document')
@@ -85,6 +92,7 @@ const AddDocuments = ({ id }) => {
     setFile(null);
     setUploaded(false);
     setOpenAddDocsForm(false);
+    setFileChosen("No file chosen");
     setDocsData({
       title: '',
       todoId: id,

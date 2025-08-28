@@ -42,7 +42,7 @@ const Links = ({ linkData }) => {
                             onClick={handleCopy}
                             className='cursor-pointer relative group transition-all duration-1200 ease-in-out'
                         >
-                            <img src='/copy1.png' alt='copy' className='w-7 h-7' />
+                            <img src='/copy.png' alt='copy' className='w-7 h-7' />
                             <div
                                 className='absolute bottom-0 left-[-10px] bg-black z-10 py-1 px-2 text-white rounded-md  hidden group-hover:bottom-[-40px] group-hover:block'
                             >
