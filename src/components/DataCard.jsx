@@ -77,7 +77,7 @@ const DataCard = ({ data, setOpenDetailCard }) => {
 
 
                 <button className='bg-[#DC3545] text-[#FFFFFF]  button' onClick={handleDelete}>
-                    Remove
+                    Delete
                     <img src="/bin.png" alt="bin" className='w-5 h-5' />
                 </button>
             </div>
