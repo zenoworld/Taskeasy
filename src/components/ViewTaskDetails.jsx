@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState, useRef } from 'react';
 import { AuthContext } from '../context/Context';
 import AddTodoForm from './formSections/AddTodoForm';
 import Close from './Close';
@@ -24,6 +24,8 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
   const [threeDotsOpen, setThreeDotsOpen] = useState(false);
   const [openViewLinksSection, setOpenViewLinksSection] = useState(false);
   const [openDocumentSection, setOpenDocumentSection] = useState(false);
+
+  const threeDotDivRef = useRef();
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -86,6 +88,25 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
     const timer = setInterval(updateRemainingTime, 1000);
     return () => clearInterval(timer);
   }, [viewTaskData.deadlineDate, viewTaskData.deadlineTime, viewTaskData.id, dispatch])
+
+  useEffect(() => {
+    const handleOutSideClick = (e) => {
+      if (threeDotDivRef.current && !threeDotDivRef.current.contains(e.target)) {
+        setThreeDotsOpen(false);
+      }
+    }
+
+    if (threeDotsOpen) {
+      window.addEventListener('mousedown', handleOutSideClick);
+    } else {
+      window.removeEventListener('mousedown', handleOutSideClick);
+    }
+
+    return () => {
+      window.removeEventListener('mousedown', handleOutSideClick);
+    }
+  }, [threeDotsOpen])
+
 
   const handleEdit = () => {
     setThreeDotsOpen(false);
@@ -166,7 +187,9 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
                         className=' flex justify-end items-center px-2'
                       >
                         <button
-                          className='cursor-pointer rounded-full' onClick={() => setThreeDotsOpen(!threeDotsOpen)}
+                          className='cursor-pointer rounded-full'
+                          onClick={() => setThreeDotsOpen(!threeDotsOpen)}
+                          ref={threeDotDivRef}
                         >
                           <img
                             src='/dots.png'

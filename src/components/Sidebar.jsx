@@ -44,10 +44,12 @@ const Sidebar = () => {
             <h2 className='sidebar_header'><img src="/icon.png" alt='icon' className='w-8 h-8' />Taskeasy</h2>
             <div className='sidebar_menu '>
 
-                <NavLink to="/addTodo"><div className='sidebar_content'>
-                    Add Todo
-                    <img src="/add.png" alt='add' className='sidebar_content_img' />
-                </div></NavLink>
+                <NavLink to="/addTodo">
+                    <div className='sidebar_content'>
+                        Add Todo
+                        <img src="/add.png" alt='add' className='sidebar_content_img' />
+                    </div>
+                </NavLink>
 
                 <div
                     className='sidebar_content flex-col'

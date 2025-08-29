@@ -25,11 +25,11 @@ h1 {
   }
 
   .home_container {
-    @apply w-[calc(100%-60px)] md:w-[calc(100%-256px)] h-screen bg-gray-900 text-gray-200 flex flex-col items-center justify-center overflow-y-scroll
+    @apply w-[calc(100%-80px)] md:w-[calc(100%-256px)] h-screen bg-gray-900 text-gray-200 flex flex-col items-center justify-center overflow-y-scroll
   }
 
   .sidebar {
-    @apply w-15 md:w-64  h-screen bg-black/30 text-gray-200 flex flex-col justify-between py-4 absolute top-0 left-0 z-50
+    @apply w-20 md:w-64  h-screen bg-black/30 text-gray-200 flex flex-col justify-between py-4 absolute top-0 left-0 z-50
   }
 
   .sidebar_header {
@@ -79,7 +79,7 @@ h1 {
   }
 
   .checkbox {
-    @apply flex justify-center items-center gap-1 outline-none cursor-pointer accent-emerald-600 w-4 h-4
+    @apply flex justify-center items-center gap-1 outline-none cursor-pointer accent-green-600 w-4 h-4
   }
 
   .linkForm {
@@ -95,15 +95,15 @@ h1 {
   }
 
   .data_container {
-    @apply w-full h-full flex flex-col justify-start items-center relative
+    @apply w-full h-full flex flex-col justify-start items-center relative 
   }
 
   .card_container {
-    @apply p-6 flex flex-wrap justify-center gap-x-16 gap-y-10 max-w-full relative
+    @apply p-6 flex flex-wrap justify-center  gap-x-10 gap-y-10 max-w-full relative
   }
 
   .filter_part {
-    @apply w-full h-40 flex justify-center items-center gap-4 px-4 py-6 rounded-md text-gray-200
+    @apply w-full  flex justify-center lg:justify-start items-center gap-4 px-20 py-16 text-gray-200
   }
 
   .filter_btn {
@@ -111,7 +111,7 @@ h1 {
   }
 
   .card {
-    @apply w-[400px] h-[250px] flex flex-col justify-between items-start gap-1 mb-4 p-4 rounded-md relative bg-gray-800/80 shadow-gray-950 shadow-lg
+    @apply w-[370px] h-[240px] flex flex-col justify-between items-start gap-1 mb-4 p-4 rounded-md relative bg-gray-800/80 shadow-gray-950 shadow-lg
   }
 
   .card_label {
