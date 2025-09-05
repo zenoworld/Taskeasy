@@ -89,23 +89,23 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
     return () => clearInterval(timer);
   }, [viewTaskData.deadlineDate, viewTaskData.deadlineTime, viewTaskData.id, dispatch])
 
-  useEffect(() => {
-    const handleOutSideClick = (e) => {
-      if (threeDotDivRef.current && !threeDotDivRef.current.contains(e.target)) {
-        setThreeDotsOpen(false);
-      }
-    }
+  // useEffect(() => {
+  //   const handleOutSideClick = (e) => {
+  //     if (threeDotDivRef.current && !threeDotDivRef.current.contains(e.target)) {
+  //       setThreeDotsOpen(false); 
+  //     }
+  //   }
 
-    if (threeDotsOpen) {
-      window.addEventListener('mousedown', handleOutSideClick);
-    } else {
-      window.removeEventListener('mousedown', handleOutSideClick);
-    }
+  //   if (threeDotsOpen) {
+  //     window.addEventListener('mousedown', handleOutSideClick);
+  //   } else {
+  //     window.removeEventListener('mousedown', handleOutSideClick);
+  //   }
 
-    return () => {
-      window.removeEventListener('mousedown', handleOutSideClick);
-    }
-  }, [threeDotsOpen])
+  //   return () => {
+  //     window.removeEventListener('mousedown', handleOutSideClick);
+  //   }
+  // }, [threeDotsOpen])
 
 
   const handleEdit = () => {
@@ -147,11 +147,10 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
 
 
   return (
-    <div className='fixed top-0 left-0 w-full h-screen bg-black/50 text-gray-200 flex items-center justify-center z-50'>
-      <div className='bg-gray-800 p-6 rounded-lg shadow-lg w-11/12 max-w-2xl h-11/12 overflow-y-auto relative '>
+    <div className='fixed top-0 left-0 w-full h-screen bg-black/70 text-gray-200 flex items-center justify-center z-50'>
+      <div className='relative bg-gray-800 p-6 rounded-md shadow-lg w-11/12 max-w-2xl h-11/12 overflow-y-auto'>
 
         <Close setOpenDetailCard={setOpenDetailCard} clearEditItemData={clearEditItemData} />
-
 
         {
           editDetailCard != null ?
@@ -159,7 +158,8 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
               <div className='w-full flex items-center justify-center relative py-4 px-4'>
                 <AddTodoForm />
               </div>
-            ) :
+            )
+            :
             editDetailCard == null && openViewLinksSection && !openDocumentSection ?
               (
                 <div className='w-full h-[80%] flex flex-col items-center justify-between relative'>
@@ -261,11 +261,10 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
                 )
         }
 
-        {
-          !data.failed && !data.complete &&
-          <div className='flex justify-between items-center absolute bottom-0 right-0 p-4 gap-2 w-full'>
+        
+          <div className='flex justify-between items-center absolute bottom-0 left-0 p-6  w-full'>
             {
-              !openViewLinksSection && !openDocumentSection &&
+              !openViewLinksSection && !openDocumentSection && !data.failed && !data.complete &&
               <button
                 className='bg-[#28A745] button text-[#000000]'
                 onClick={handleEdit}>
@@ -284,8 +283,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
             }
 
           </div>
-        }
-
+        
 
       </div>
     </div>

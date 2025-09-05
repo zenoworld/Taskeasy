@@ -29,10 +29,13 @@ const AllTasks = () => {
                 new Date(a.deadlineDate) - new Date(b.deadlineDate)
             ));
     }
+    const sortByStatus = () => {
+        
+    }
 
     return (
         <div className='data_container'>
-            <FilterPart sortByLatest={sortByLatest} sortByOldest={sortByOldest} />
+            <FilterPart sortByLatest={sortByLatest} sortByOldest={sortByOldest} sortByStatus={sortByStatus} />
             <div className='card_container'>
                 {
                     fetchedDetails.length > 0 ?
