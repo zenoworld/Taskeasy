@@ -110,19 +110,14 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
 
   const handleEdit = () => {
     setThreeDotsOpen(false);
-    if (editDetailCard) {
-      dispatch({
+
+    dispatch(
+      {
         type: 'SET_EDIT_ITEM',
-        payload: null
-      })
-    } else {
-      dispatch(
-        {
-          type: 'SET_EDIT_ITEM',
-          payload: viewTaskData
-        }
-      )
-    }
+        payload: viewTaskData
+      }
+    )
+
   }
 
   const clearEditItemData = () => {
@@ -143,6 +138,13 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
     setThreeDotsOpen(false);
     setOpenViewLinksSection(false);
     setOpenDocumentSection(false);
+
+    if (editDetailCard) {
+      dispatch({
+        type: 'SET_EDIT_ITEM',
+        payload: null
+      })
+    }
   }
 
 
@@ -261,29 +263,29 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
                 )
         }
 
-        
-          <div className='flex justify-between items-center absolute bottom-0 left-0 p-6  w-full'>
-            {
-              !openViewLinksSection && !openDocumentSection && !data.failed && !data.complete &&
-              <button
-                className='bg-[#28A745] button text-[#000000]'
-                onClick={handleEdit}>
-                Edit
-                <img src="/edit.png" alt="edit" className='w-4 h-4' />
-              </button>
-            }
-            {
-              (openViewLinksSection || openDocumentSection) &&
-              <button
-                className='button text-[#ffffff] bg-red-600'
-                onClick={closeAll}
-              >
-                Close
-              </button>
-            }
 
-          </div>
-        
+        <div className='flex justify-between items-center absolute bottom-0 left-0 p-6  w-full'>
+          {
+            !openViewLinksSection && !openDocumentSection && !data.failed && !data.complete && editDetailCard== null &&
+            <button
+              className='bg-[#28A745] button text-[#000000]'
+              onClick={handleEdit}>
+              Edit
+              <img src="/edit.png" alt="edit" className='w-4 h-4' />
+            </button>
+          }
+          {
+            (openViewLinksSection || openDocumentSection || editDetailCard) &&
+            <button
+              className='button text-[#ffffff] bg-red-600'
+              onClick={closeAll}
+            >
+              back
+            </button>
+          }
+
+        </div>
+
 
       </div>
     </div>

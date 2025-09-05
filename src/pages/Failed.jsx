@@ -14,13 +14,13 @@ const Failed = () => {
 
     const sortByLatest = () => {
         setFailedTasks(
-            [...details].sort((a, b) =>
+            [...failedTasks].sort((a, b) =>
                 new Date(b.deadlineDate) - new Date(a.deadlineDate)
             ));
     }
     const sortByOldest = () => {
         setFailedTasks(
-            [...details].sort((a, b) =>
+            [...failedTasks].sort((a, b) =>
                 new Date(a.deadlineDate) - new Date(b.deadlineDate)
             ));
     }

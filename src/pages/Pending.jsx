@@ -15,13 +15,13 @@ const Pending = () => {
 
   const sortByLatest = () => {
     setPendingTasks(
-      [...details].sort((a, b) =>
+      [...pendingTasks].sort((a, b) =>
         new Date(b.deadlineDate) - new Date(a.deadlineDate)
       ));
   }
   const sortByOldest = () => {
     setPendingTasks(
-      [...details].sort((a, b) =>
+      [...pendingTasks].sort((a, b) =>
         new Date(a.deadlineDate) - new Date(b.deadlineDate)
       ));
   }
