@@ -65,7 +65,7 @@ const DataCard = ({ data, setOpenDetailCard }) => {
 
 
 
-            <div className='w-full flex flex-wrap justify-center gap-8 sm:gap-0 sm:justify-between items-center relative'>
+            <div className='w-full flex flex-col sm:flex-row justify-center gap-4 sm:gap-0 sm:justify-between items-center relative '>
                 <button
                     className={`
                     bg-[#17A2B8] text-[#000000] button
@@ -76,7 +76,7 @@ const DataCard = ({ data, setOpenDetailCard }) => {
                 </button>
 
 
-                <button className='bg-[#DC3545] text-[#FFFFFF]  button' onClick={handleDelete}>
+                <button className='bg-[#DC3545] text-[#FFFFFF] button' onClick={handleDelete}>
                     Delete
                     <img src="/bin.png" alt="bin" className='w-5 h-5' />
                 </button>

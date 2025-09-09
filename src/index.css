@@ -25,11 +25,11 @@ h1 {
   }
 
   .home_container {
-    @apply w-[calc(100%-64px)] md:w-[calc(100%-256px)] h-screen text-gray-200 flex flex-col items-center justify-center overflow-y-scroll
+    @apply  h-screen text-gray-200 flex flex-col items-center justify-center overflow-y-scroll transition-all duration-400 ease-in-out
   }
 
   .sidebar {
-    @apply w-64  h-screen bg-gray-900 text-gray-200 flex flex-col justify-between py-4 absolute top-0 left-0 z-50 transition-all duration-200 ease-in-out
+    @apply w-64  h-screen bg-gray-900 text-gray-200 flex flex-col justify-between py-4 absolute top-0 left-0 z-50 transition-all duration-300 ease-in-out
   }
   .sidebar_close {
     @apply w-16 h-screen bg-gray-900 text-gray-200 flex flex-col justify-start py-4 absolute top-0 left-0 transition-all duration-300 ease-in-out gap-4
@@ -65,7 +65,7 @@ h1 {
 
 
   .button {
-    @apply px-4 py-1 rounded-sm w-2/5 gap-2 cursor-pointer flex justify-center items-center text-lg font-medium transition-all duration-300 ease-in-out shadow-sm shadow-slate-800
+    @apply px-4 py-1 rounded-sm w-2/5 gap-2 cursor-pointer flex justify-center items-center text-lg font-medium transition-all duration-300 ease-in-out shadow-sm shadow-slate-800 w-full sm:w-2/5
   }
 
   .todoForm {
@@ -109,7 +109,7 @@ h1 {
   }
 
   .filter_part {
-    @apply w-full  flex flex-wrap justify-center lg:justify-start items-center gap-4 px-20 py-16 text-gray-200
+    @apply w-full py-16 px-0 sm:px-16  flex flex-wrap justify-center lg:justify-start items-center gap-4  text-gray-200
   }
 
   .filter_btn {
@@ -117,7 +117,7 @@ h1 {
   }
 
   .card {
-    @apply w-[370px] h-[240px] flex flex-col justify-between items-start gap-1 mb-4 p-4 rounded-md relative shadow-gray-900/80 shadow-md bg-gradient-to-t from-gray-800 to-gray-900 hover:shadow-gray-700 hover:rotate-3 hover:scale-105 transition-all duration-300 ease-in-out
+    @apply w-[300px] h-[280px] sm:w-[370px] sm:h-[240px] flex flex-col justify-between items-start gap-1 mb-4 p-4 rounded-md relative shadow-gray-900/80 shadow-md bg-gradient-to-t from-gray-800 to-gray-900 hover:shadow-gray-700 hover:rotate-3 hover:scale-105 transition-all duration-200 ease-in-out
   }
 
   .card_label {

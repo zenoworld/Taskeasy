@@ -11,7 +11,7 @@ const AddTodoForm = () => {
         importance: ''
     })
 
-    const [details, dispatch, editDetailCard] = useContext(AuthContext);
+    const [details, dispatch,sidebarClose, editDetailCard] = useContext(AuthContext);
 
     useEffect(() => {
         if (editDetailCard) {

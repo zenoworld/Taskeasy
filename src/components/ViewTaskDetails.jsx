@@ -9,7 +9,7 @@ import LinksContainer from './LinksContainer';
 import DocumentContainer from './documentSection/DocumentContainer';
 
 const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
-  const [details, dispatch, editDetailCard] = useContext(AuthContext);
+  const [details, dispatch,smallSideBar, editDetailCard] = useContext(AuthContext);
   const [remainingTime, setRemainingTime] = useState(null);
   const [viewTaskData, setViewTaskData] = useState(
     {

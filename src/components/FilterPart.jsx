@@ -46,7 +46,7 @@ const FilterPart = ({ sortByLatest, sortByOldest, sortByStatus }) => {
                 ref={filterRef}
             >
                 <div
-                    className='py-1 pl-4 pr-1 cursor-pointer rounded-4xl flex justify-between items-center gap-4 border-2 border-gray-500 hover:bg-gray-600'>
+                    className='py-1 pl-4 pr-1 cursor-pointer rounded-4xl flex justify-between items-center gap-4 border-2 border-gray-500 hover:bg-gray-600 '>
                     filter
                     <img
                         src='/filterDown.png'

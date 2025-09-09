@@ -10,7 +10,8 @@ const parsing = (value) => {
 
 const initialState = {
   details: parsing(localStorage.getItem('detailsData')) || [],
-  editDetailCard: null
+  editDetailCard: null,
+  smallSideBar: window.innerWidth <= 640 ? true : false
 };
 
 export const AuthContext = createContext();
@@ -22,6 +23,7 @@ const AuthReducer = (state, action) => {
         ...state,
         details: [...state.details, action.payload]
       };
+
     case 'ADD_LINK':
       return {
         ...state,
@@ -39,11 +41,11 @@ const AuthReducer = (state, action) => {
         ...state,
         details: state.details.map((detail) => (
           detail.id === action.payload.todoId ?
-          {
-            ...detail,
-            documents:[...detail.documents,action.payload]
-          }:
-          detail
+            {
+              ...detail,
+              documents: [...detail.documents, action.payload]
+            } :
+            detail
         ))
       }
 
@@ -56,12 +58,12 @@ const AuthReducer = (state, action) => {
     case 'DELETE_LINK':
       return {
         ...state,
-        details : state.details.map((detail) => (
+        details: state.details.map((detail) => (
           detail.id === action.payload.todoId ?
-          {
-            ...detail,
-            links : detail.links.filter((link) => link.id != action.payload.id)
-          }: detail
+            {
+              ...detail,
+              links: detail.links.filter((link) => link.id != action.payload.id)
+            } : detail
         ))
       }
     case 'DELETE_DOCS':
@@ -69,11 +71,11 @@ const AuthReducer = (state, action) => {
         ...state,
         details: state.details.map((detail) => (
           detail.id === action.payload.todoId ?
-          {
-            ...detail,
-            documents:detail.documents.filter((doc) => doc.id != action.payload.id)
-          } 
-          :detail
+            {
+              ...detail,
+              documents: detail.documents.filter((doc) => doc.id != action.payload.id)
+            }
+            : detail
         ))
       }
     case 'SET_EDIT_ITEM':
@@ -140,6 +142,11 @@ const AuthReducer = (state, action) => {
         ...state,
         details: []
       }
+    case 'SMALL_SIDEBAR':
+      return {
+        ...state,
+        smallSideBar: action.payload
+      }
     default:
       return state;
   }
@@ -154,7 +161,7 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={[state.details, dispatch, state.editDetailCard]}
+      value={[state.details, dispatch,state.smallSideBar, state.editDetailCard]}
     >
       {children}
     </AuthContext.Provider>
