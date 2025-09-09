@@ -12,6 +12,8 @@ const Sidebar = () => {
     const [failedTasks, setFailedTasks] = useState([]);
     const [sidebarClose, setSidebarClose] = useState(false);
 
+    const [deviceWidth, setDeviceWidth] = useState(window.innerWidth);
+
     const dropdownRef = useRef(null);
 
     useEffect(() => {
@@ -69,6 +71,18 @@ const Sidebar = () => {
             navLink: '/failedTasks'
         },
     ]
+
+    useEffect(() => {
+      const handleWidthChange = () => setDeviceWidth(window.innerWidth);
+
+      window.addEventListener('resize' , handleWidthChange);
+      if (deviceWidth <= 640) {
+        setSidebarClose(true);
+      }
+
+      return () => window.removeEventListener('resize' , handleWidthChange);
+    }, [])
+    
 
     
 
