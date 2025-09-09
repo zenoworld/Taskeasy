@@ -37,7 +37,7 @@ const AddLinks = ({ id }) => {
             className='linkForm'
             onSubmit={handleSubmit}
         >
-            <div className=' w-[80%] flex justify-between'>
+            <div className='w-full md:w-[80%] flex flex-col md:flex-row justify-center md:justify-between gap-2'>
                 <input
                     type='text'
                     placeholder='enter the link title'

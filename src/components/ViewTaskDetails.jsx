@@ -132,7 +132,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
 
   return (
     <div className='fixed top-0 left-0 w-full h-screen bg-black/70 text-gray-200 flex items-center justify-center z-50'>
-      <div className='relative bg-gray-800 p-6 rounded-md shadow-lg w-11/12 max-w-2xl h-11/12 overflow-y-auto'>
+      <div className='relative bg-gray-800 p-4 md:p-6 rounded-md shadow-lg w-11/12 max-w-2xl h-11/12 overflow-y-auto'>
 
         <Close setOpenDetailCard={setOpenDetailCard} clearEditItemData={clearEditItemData} />
 
@@ -146,7 +146,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
             :
             editDetailCard == null && openViewLinksSection && !openDocumentSection ?
               (
-                <div className='w-full h-[80%] flex flex-col items-center justify-between relative'>
+                <div className='w-full h-[80%] flex flex-col items-center justify-between relative gap-4 md:gap-0'>
                   <AddLinks id={data.id} />
                   <LinksContainer id={data.id} />
                 </div>
