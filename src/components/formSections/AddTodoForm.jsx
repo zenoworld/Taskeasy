@@ -123,7 +123,7 @@ const AddTodoForm = () => {
             </label>
             <label className='label'>
                 Deadline
-                <div className='flex justify-between items-center gap-4 w-full relative'>
+                <div className='flex flex-col sm:flex-row justify-between items-center gap-4 w-full relative'>
                     <input
                         type='date'
                         placeholder='enter the deadline'
@@ -154,7 +154,7 @@ const AddTodoForm = () => {
                     :
                     <button
                         type='submit'
-                        className='bg-[#2563EB] w-full py-1 rounded-md cursor-pointer'>
+                        className='bg-sky-500 text-[#000000] font-medium w-full py-1 rounded-md cursor-pointer'>
                         Submit Task
                     </button>
             }

@@ -89,24 +89,6 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
     return () => clearInterval(timer);
   }, [viewTaskData.deadlineDate, viewTaskData.deadlineTime, viewTaskData.id, dispatch])
 
-  // useEffect(() => {
-  //   const handleOutSideClick = (e) => {
-  //     if (threeDotDivRef.current && !threeDotDivRef.current.contains(e.target)) {
-  //       setThreeDotsOpen(false); 
-  //     }
-  //   }
-
-  //   if (threeDotsOpen) {
-  //     window.addEventListener('mousedown', handleOutSideClick);
-  //   } else {
-  //     window.removeEventListener('mousedown', handleOutSideClick);
-  //   }
-
-  //   return () => {
-  //     window.removeEventListener('mousedown', handleOutSideClick);
-  //   }
-  // }, [threeDotsOpen])
-
 
   const handleEdit = () => {
     setThreeDotsOpen(false);
@@ -266,7 +248,7 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
 
         <div className='flex justify-between items-center absolute bottom-0 left-0 p-6  w-full'>
           {
-            !openViewLinksSection && !openDocumentSection && !data.failed && !data.complete && editDetailCard== null &&
+            !openViewLinksSection && !openDocumentSection && !data.failed && !data.complete && editDetailCard == null &&
             <button
               className='bg-[#28A745] button text-[#000000]'
               onClick={handleEdit}>
@@ -277,10 +259,11 @@ const ViewTaskDetails = ({ data, setOpenDetailCard }) => {
           {
             (openViewLinksSection || openDocumentSection || editDetailCard) &&
             <button
-              className='button text-[#ffffff] bg-red-600'
+              className='button text-[#ffffff] bg-neutral-900 '
               onClick={closeAll}
             >
-              back
+              <img src="/back.png" alt="back" className='w-4 h-4' />
+              <p className=''>back</p>
             </button>
           }
 

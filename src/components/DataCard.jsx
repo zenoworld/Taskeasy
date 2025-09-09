@@ -65,7 +65,7 @@ const DataCard = ({ data, setOpenDetailCard }) => {
 
 
 
-            <div className='w-full flex justify-center gap-8 sm:gap-0 sm:justify-between items-center relative'>
+            <div className='w-full flex flex-wrap justify-center gap-8 sm:gap-0 sm:justify-between items-center relative'>
                 <button
                     className={`
                     bg-[#17A2B8] text-[#000000] button

@@ -46,7 +46,7 @@ const FilterPart = ({ sortByLatest, sortByOldest, sortByStatus }) => {
                 ref={filterRef}
             >
                 <div
-                    className='py-1 pl-4 pr-1 cursor-pointer rounded-4xl flex justify-between items-center gap-4 border-2 border-gray-600 hover:bg-gray-600'>
+                    className='py-1 pl-4 pr-1 cursor-pointer rounded-4xl flex justify-between items-center gap-4 border-2 border-gray-500 hover:bg-gray-600'>
                     filter
                     <img
                         src='/filterDown.png'
@@ -57,16 +57,16 @@ const FilterPart = ({ sortByLatest, sortByOldest, sortByStatus }) => {
 
                 {
                     openFilterMenu &&
-                    <div className='bg-black py-1 rounded-md w-[150%] h-auto absolute z-50 left-0 top-10 flex flex-col gap-2 transition-all duration-500 ease-in-out'>
-                        <div className='py-2 px-4 hover:bg-gray-800 cursor-pointer' onClick={sortByLatest}>
+                    <div className=' bg-slate-900 py-1 rounded-md w-[150%] h-auto absolute z-50 left-0 top-10 flex flex-col gap-2 transition-all duration-500 ease-in-out'>
+                        <div className='py-3 px-4 hover:bg-gray-700 cursor-pointer' onClick={sortByLatest}>
                             Sort by Latest
                         </div>
-                        <div className='py-2 px-4 hover:bg-gray-800 cursor-pointer' onClick={sortByOldest}>
+                        <div className='py-3 px-4 hover:bg-gray-700 cursor-pointer' onClick={sortByOldest}>
                             Sort by Oldest
                         </div>
 
                         {currentRoute == "allTasks" &&
-                            <div className='py-2 px-4 hover:bg-gray-800 cursor-pointer' onClick={sortByStatus}>
+                            <div className='py-2 px-4 hover:bg-gray-700 cursor-pointer' onClick={sortByStatus}>
                                 Sort by Status
                             </div>}
 
