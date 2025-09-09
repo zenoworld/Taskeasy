@@ -18,7 +18,7 @@ const DashBoard = () => {
     return <>
         <div className='dashboard'>
             <Sidebar />
-            <div className={`home_container ${smallSideBarOpen ? 'w-[calc(100%-64px)]' : 'w-[calc(100%-256px)]'}`}>
+            <div className={`home_container ${smallSideBarOpen ? 'w-[calc(100%-64px)]' : 'w-[calc(100%-64px)] sm:w-[calc(100%-256px)]'}`}>
                 <Router/>
             </div>
         </div>
