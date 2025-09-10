@@ -57,7 +57,7 @@ const Sidebar = () => {
     };
   }, [dispatch]);
 
-  const sideBarCloseNavData = [
+  const smallsideBarData = [
     { imgUrl: '/home.png', navLink: '/' },
     { imgUrl: '/add.png', navLink: '/addTodo' },
     { imgUrl: '/task.png', navLink: '/allTasks' },
@@ -83,7 +83,7 @@ const Sidebar = () => {
           </div>
 
           <div className="w-full h-5/6 flex flex-col justify-start items-center relative">
-            {sideBarCloseNavData.map((item, index) => (
+            {smallsideBarData.map((item, index) => (
               <NavLink key={index} to={item.navLink} className="sidebar_close_navlink">
                 <img src={item.imgUrl} alt={item.navLink} className="sidebar_content_img" />
               </NavLink>
